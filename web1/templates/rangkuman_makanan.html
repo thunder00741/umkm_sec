@@ -1,0 +1,54 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Segmen UMKM</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Segmentasi UMKM">
+<link rel="icon" href="{% static '/logo.png' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+</head>
+<body>
+<nav class="teal darken-1">
+      <div class="nav-wrapper">
+        <a class="brand-logo">   Hello, {{user.first_name}}</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/owner">Home</a></li>
+          <li><a href="/">Log out</a></li>
+        </ul>
+      </div>
+</nav>
+<h5><b>*Note: Rangkuman hanya diambil dari nilai terbanyak dari setiap segmen, sangat disarankan untuk melihat grafik dan rincian segmentasi</b></h5>
+<table border = "1" cellpadding="5" cellspacing="5">
+    <td><b>Segmen ke-</b></td>
+    <td><b>Jumlah Responden per Segmen</b></td>
+    <td><b>Jenis Kelamin</b></td>
+    <td><b>Umur</b></td>
+    <td><b>Pekerjaan</b></td>
+    <td><b>Status Pernikahan</b></td>
+    <td><b>Pendapatan</b></td>
+    {% for i in data %}
+
+    <tr>
+        <td>{{i.segmen_baru}}</td>
+        <td>{{i.responden_name}}</td>
+        <td>{{i.gender}} ({{i.persen_gender}}%)</td>
+        <td>{{i.umur}} ({{i.persen_umur}}%)</td>
+        <td>{{i.pekerjaan}} ({{i.persen_pekerjaan}}%)</td>
+        <td>{{i.status}} ({{i.persen_status}}%)</td>
+        <td>{{i.pendapatan}} ({{i.persen_pendapatan}}%)</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>

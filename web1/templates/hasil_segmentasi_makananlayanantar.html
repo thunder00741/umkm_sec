@@ -1,0 +1,33 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Segmen UMKM</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Segmentasi UMKM">
+<link rel="icon" href="{% static '/logo.png' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+</head>
+<body>
+<nav class="teal darken-1">
+      <div class="nav-wrapper">
+        <a class="brand-logo">   Hello, {{user.first_name}}</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/owner">Home</a></li>
+          <li><a href="/">Log out</a></li>
+        </ul>
+      </div>
+</nav>
+<img class="container materialboxed" height="500" width="1500" src="{% static 'images/sumber_informasi_mengenai_produkXstrategi_pemasaran_yang_paling_menarik_dalam_pembelian_produk.png' %}"></img>
+
+
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>

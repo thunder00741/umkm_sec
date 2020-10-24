@@ -1,0 +1,49 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Segmen UMKM</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Segmentasi UMKM">
+<link rel="icon" href="{% static '/logo.png' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+</head>
+<body>
+<nav class="teal darken-1">
+      <div class="nav-wrapper">
+        <a class="brand-logo">   Hello, {{user.first_name}}</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/owner">Home</a></li>
+          <li><a href="/">Log out</a></li>
+        </ul>
+      </div>
+</nav>
+<img class="container materialboxed" height="500" width="1500" src="{% static 'images/sumber_informasi_mengenai_produkXstrategi_pemasaran_yang_paling_menarik_dalam_pembelian_produk.png' %}"></img>
+<blockquote class="container black-text">
+        <h5>Keterangan Sumbu Sumber Informasi:</h5>
+        <h6>    1. Sosial Media (cth : Instagram, Facebook)</h6>
+        <h6>    2. Mengunjungi toko langsung secara offline</h6>
+        <h6>    3. Mesin pencari online (cth : Google)</h6>
+        <h6>    4. Artis / Fashion & Beauty Influencer</h6>
+        <h6>    5. Teman-teman atau kerabat</h6>
+        <h6>    6. Majalah atau media cetak</h6>
+    </blockquote>
+<blockquote class="container black-text">
+        <h5>Keterangan Sumbu Strategi Pemasaran yang Paling Menarik:</h5>
+        <h6>    1. Testimoni toko/produk yang baik</h6>
+        <h6>    2. Diskon / potongan harga</h6>
+        <h6>    3. Kemudahan pemesanan dan channel pembayaran (transfer bank, m-banking, dll)</h6>
+        <h6>    4. Layanan yang baik termasuk pengajuan komplain, dan lain-lain</h6>
+        <h6>    5. Mempunyai konten interaksi yang menarik (giveaway, dan lain-lain)</h6>
+        <h6> </h6>
+    </blockquote>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>

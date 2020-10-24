@@ -1,0 +1,339 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Segmen UMKM</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Segmentasi UMKM">
+<link rel="icon" href="{% static '/logo.png' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<!-- head - Googlefonts link -->
+</head>
+
+<!-- head - Googlefonts link -->
+<body>
+<form action="responden/done" method="post">
+    {% csrf_token %}
+
+    <nav class="teal darken-1">
+      <div class="nav-wrapper">
+        <a class="brand-logo">   Hello, Responden</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/responden">Home</a></li>
+          <li><a href="/">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="col">
+    <label class="black-text text-darken-2">Ini adalah Form Bisnis Makanan - layan antar saja</label>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <label class="black-text text-darken-2"><h6>Nama Bisnis:</h6></label>
+    <select name="id_bisnis" class="form-control mb-4 text-center"><br>
+										{% for i in data %}
+                                        <option value={{i.id}} selected>{{i.first_name}}</option>
+                                        {% endfor %}
+									</select>
+    <label class="black-text text-darken-2"><h6>Tipe Bisnis:</h6></label>
+    <select name="tipe_bisnis" class="form-control mb-4 text-center"><br>
+										{% for i in data %}
+                                        <option value={{i.last_name}} selected>{{i.last_name}}</option>
+                                        {% endfor %}
+									</select>
+    <div class="row">
+          <div class="input-field col s12">
+            <input id="input_text" type="text"  name="responden_name" required>
+            <label for="input_text">Nama Responden</label>
+          </div>
+    </div>
+  <!-- ------------------Personal Details---------------------------- -->
+  <fieldset>
+    <!-- groups of widgets that share the same purpose, for styling and semantic purposes -->
+    <legend>Demografi</legend>
+    <!-- formally describes the purpose of the fieldset it is included inside. -->
+
+    <!-- ------------------Radio Buttons-------------------------------- -->
+    <div>
+        <label class="black-text text-darken-2"><h6>Gender Anda?</h6></label>
+      <p>
+        <label><input type="radio" name="gender" value="laki-laki" required/> <span class="black-text text-darken-2">Laki-laki</span></label></p>
+        <p><label><input type="radio" name="gender" value="perempuan"/> <span class="black-text text-darken-2">Perempuan</span></label>
+      </p>
+    </div>
+    <div>
+        <label class="black-text text-darken-2"><h6>Umur Anda?</h6></label>
+      <p>
+        <label><input type="radio" name="umur" value="<18 Tahun" required><span class="black-text text-darken-2"> < 18 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value="18-23 Tahun"><span class="black-text text-darken-2"> 18 - 23 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value="24-30 Tahun"><span class="black-text text-darken-2"> 24 - 30 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value="31-35 Tahun"><span class="black-text text-darken-2"> 31 - 35 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value="36-40 Tahun"><span class="black-text text-darken-2"> 36 - 40 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value="41-45 Tahun"><span class="black-text text-darken-2"> 41 - 45 Tahun</span></label></p>
+        <p><label><input type="radio" name="umur" value=">45 Tahun"><span class="black-text text-darken-2"> > 45 Tahun</span></label>
+      </p>
+    </div>
+    <div>
+        <label class="black-text text-darken-2"><h6>Pekerjaan Anda?</h6></label>
+      <p>
+        <label><input type="radio" name="pekerjaan" value="Pelajar/Mahasiswa" required><span class="black-text text-darken-2"> Pelajar/Mahasiswa</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Pekerja Paruh Waktu"><span class="black-text text-darken-2"> Pekerja Paruh Waktu</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Pekerja Penuh Waktu"><span class="black-text text-darken-2"> Pekerja Penuh Waktu</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Pekerja Profesional Mandiri"><span class="black-text text-darken-2"> Pekerja Profesional Mandiri</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Ibu Rumah Tangga"><span class="black-text text-darken-2"> Ibu Rumah Tangga</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Wirausaha"><span class="black-text text-darken-2"> Wirausaha</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Pensiun"><span class="black-text text-darken-2"> Pensiun</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="Sedang Tidak Bekerja"><span class="black-text text-darken-2"> Sedang Tidak Bekerja</span></label></p>
+        <p><label><input type="radio" name="pekerjaan" value="lain-lain"><span class="black-text text-darken-2"> Lain-Lain</span></label>
+      </p>
+    </div>
+    <div>
+      <label class="black-text text-darken-2"><h6>Status Anda?</h6></label>
+      <p>
+        <label><input type="radio" name="status" value="Belum menikah" required><span class="black-text text-darken-2"> Belum menikah</span></label></p>
+        <p><label><input type="radio" name="status" value="Sudah menikah, belum mempunyai anak"><span class="black-text text-darken-2"> Sudah menikah, belum mempunyai anak</span></label></p>
+        <p><label><input type="radio" name="status" value="Sudah menikah, sudah mempunyai anak"><span class="black-text text-darken-2"> Sudah menikah, sudah mempunyai anak</span></label>
+      </p>
+    </div>
+    <div>
+      <label class="black-text text-darken-2"><h6>Pendapatan Per Bulan Anda?</h6></label>
+      <p>
+        <label><input type="radio" name="pendapatan" value="< Rp2.500.000" required><span class="black-text text-darken-2"> < Rp2.500.000</span></label></p>
+        <p><label><input type="radio" name="pendapatan" value="Rp2.500.000 - Rp5.000.000"><span class="black-text text-darken-2"> Rp2.500.000 - Rp5.000.000</span></label></p>
+        <p><label><input type="radio" name="pendapatan" value="Rp5.000.000 - Rp10.000.000"><span class="black-text text-darken-2"> Rp5.000.000 - Rp10.000.000</span></label></p>
+        <p><label><input type="radio" name="pendapatan" value="Rp10.000.000 - Rp15.000.000"><span class="black-text text-darken-2"> Rp10.000.000 - Rp15.000.000</span></label></p>
+        <p><label><input type="radio" name="pendapatan" value="Rp15.000.000 - Rp25.000.000"><span class="black-text text-darken-2"> Rp15.000.000 - Rp25.000.000</span></label></p>
+        <p><label><input type="radio" name="pendapatan" value=">Rp25.000.000"><span class="black-text text-darken-2"> >Rp25.000.000</span></label>
+      </p>
+    </div>
+    <h1> </h1>
+
+  </fieldset>
+<fieldset>
+    <!-- groups of widgets that share the same purpose, for styling and semantic purposes -->
+    <legend>Preferensi Produk Makanan</legend>
+    <!-- formally describes the purpose of the fieldset it is included inside. -->
+
+    <!-- ------------------Radio Buttons-------------------------------- -->
+    <div>
+        <div class="card-panel light-blue darken-1">
+            <label class="white-text text-darken-3"><h6><b>Kualitas Produk / Higienis</b></h6></label>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting konsistensi makanan yang disajikan</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_konsistensi_makanan_yang_disajikan" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_konsistensi_makanan_yang_disajikan" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_konsistensi_makanan_yang_disajikan" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_konsistensi_makanan_yang_disajikan" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_konsistensi_makanan_yang_disajikan" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa banyak frekuensi pembelian produk fesyen per tahun</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_banyak_frekuensi_pembelian_produk_fesyen_per_tahun" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_banyak_frekuensi_pembelian_produk_fesyen_per_tahun" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_banyak_frekuensi_pembelian_produk_fesyen_per_tahun" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_banyak_frekuensi_pembelian_produk_fesyen_per_tahun" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_banyak_frekuensi_pembelian_produk_fesyen_per_tahun" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting kualitas makanan yang tinggi</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_kualitas_makanan_yang_tinggi" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_kualitas_makanan_yang_tinggi" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_kualitas_makanan_yang_tinggi" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_kualitas_makanan_yang_tinggi" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_kualitas_makanan_yang_tinggi" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting bahan makanan yang digunakan segar/fresh</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_bahan_makanan_yang_digunakan_segar" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_bahan_makanan_yang_digunakan_segar" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_bahan_makanan_yang_digunakan_segar" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_bahan_makanan_yang_digunakan_segar" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_bahan_makanan_yang_digunakan_segar" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+    </div>
+    <div>
+        <div class="card-panel light-blue darken-1">
+            <label class="white-text text-darken-3"><h6><b>Menu yang menarik</b></h6></label>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting terdapat menu-menu yang tidak biasa</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_terdapat_menu_menu_yang_tidak_biasa" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_terdapat_menu_menu_yang_tidak_biasa" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_terdapat_menu_menu_yang_tidak_biasa" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_terdapat_menu_menu_yang_tidak_biasa" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_terdapat_menu_menu_yang_tidak_biasa" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting ketersediaan menu makanan lokal</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_lokal" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_lokal" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_lokal" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_lokal" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_lokal" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting ketersediaan menu makanan yang menarik</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_yang_menarik" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_yang_menarik" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_yang_menarik" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_yang_menarik" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_ketersediaan_menu_makanan_yang_menarik" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting ketersediaan menu makanan yang menarik</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_merupakan_tempat_yang_sering_dikunjungi" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_merupakan_tempat_yang_sering_dikunjungi" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_merupakan_tempat_yang_sering_dikunjungi" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_merupakan_tempat_yang_sering_dikunjungi" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_merupakan_tempat_yang_sering_dikunjungi" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+    </div>
+    <div>
+        <div class="card-panel light-blue darken-1">
+            <label class="white-text text-darken-3"><h6><b>Harga dan Nilai</b></h6></label>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Harga makanan yang wajar</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Harga_makanan_yang_wajar" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Harga_makanan_yang_wajar" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Harga_makanan_yang_wajar" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Harga_makanan_yang_wajar" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Harga_makanan_yang_wajar" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Harga yang ditawarkan setara dengan tingkat pelayanan yang diberikan</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Harga_yang_ditawarkan_setara_dengan_tingkat_pelayanan" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Harga_yang_ditawarkan_setara_dengan_tingkat_pelayanan" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Harga_yang_ditawarkan_setara_dengan_tingkat_pelayanan" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Harga_yang_ditawarkan_setara_dengan_tingkat_pelayanan" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Harga_yang_ditawarkan_setara_dengan_tingkat_pelayanan" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+    </div>
+    <div>
+        <div class="card-panel light-blue darken-1">
+            <label class="white-text text-darken-3"><h6><b>Makanan Sehat</b></h6></label>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Terdapat pilihan menu makanan sehat di restoran</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Terdapat_pilihan_menu_makanan_sehat_di_restoran" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Terdapat_pilihan_menu_makanan_sehat_di_restoran" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Terdapat_pilihan_menu_makanan_sehat_di_restoran" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Terdapat_pilihan_menu_makanan_sehat_di_restoran" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Terdapat_pilihan_menu_makanan_sehat_di_restoran" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Makanan mengandung gizi yang baik</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Makanan_mengandung_gizi_yang_baik" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Makanan_mengandung_gizi_yang_baik" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Makanan_mengandung_gizi_yang_baik" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Makanan_mengandung_gizi_yang_baik" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Makanan_mengandung_gizi_yang_baik" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+    </div>
+  <h1> </h1>
+</fieldset>
+<fieldset>
+    <!-- groups of widgets that share the same purpose, for styling and semantic purposes -->
+    <legend>Preferensi Kualitas Pengantaran</legend>
+    <!-- formally describes the purpose of the fieldset it is included inside. -->
+ 
+    <!-- ------------------Radio Buttons-------------------------------- -->
+    <div>
+        <div class="card-panel light-blue darken-1">
+            <label class="white-text text-darken-3"><h6>Performa pengantaran</b></h6></label>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting pesanan diantar sesuai dengan yang dijanjikan</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_sesuai_dengan_yang_dijanjikan" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_sesuai_dengan_yang_dijanjikan" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_sesuai_dengan_yang_dijanjikan" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_sesuai_dengan_yang_dijanjikan" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_sesuai_dengan_yang_dijanjikan" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+        <div>
+            <label class="black-text text-darken-2"><h6>Seberapa penting pesanan diantar dengan segera</h6></label><br>
+            <label class="black-text text-darken-2">(1 - Sangat tidak setuju) (5 - Sangat setuju)</label>
+            <p>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_dengan_segera" value="1" required><span class="black-text text-darken-2"> 1 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_dengan_segera" value="2"><span class="black-text text-darken-2"> 2 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_dengan_segera" value="3"><span class="black-text text-darken-2"> 3 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_dengan_segera" value="4"><span class="black-text text-darken-2"> 4 </span></label>
+                <label><input type="radio" name="Seberapa_penting_pesanan_diantar_dengan_segera" value="5"><span class="black-text text-darken-2"> 5 </span></label>
+            </p>
+        </div>
+    </div>
+  
+</fieldset>
+
+  
+  <!-- ------------------Checkboxes-------------------------------- -->
+
+
+  <button class="btn btn-info my-4 btn-block" type="submit"><b>SUBMIT</b></button>
+
+</form>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 0) {
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
+</body>
+</html>
+<!-- https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation -->
